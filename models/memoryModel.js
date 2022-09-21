@@ -16,14 +16,13 @@ const memorySchema = new mongoose.Schema({
   content:{
     type: String
   },
-  likes: {
-    required: true,
-    type: Number
-  },
-  comments: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Comment'
-  },
+  likes: Number,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Comment'
+    }
+  ],
 })
 
 const memoryModel = mongoose.model("Memory", memorySchema)

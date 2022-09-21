@@ -7,6 +7,8 @@ const mongoose = require('mongoose')
 
 const userRoute = require('./routes/userRoute')
 const usersRoute = require('./routes/usersRoute')
+const memoriesByUser = require('./routes/memoriesByUser')
+const memoryRoute = require('./routes/memoryRoute')
 
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
@@ -18,8 +20,12 @@ app.use(bodyParser.json())
 
 app.use(userRoute)
 app.use(usersRoute)
+app.use(memoriesByUser)
+app.use(memoryRoute)
 
-// const seed = require('./funcs/seed')
+const seed = require('./funcs/seed')
+// seed.seedUser()
+// seed.seedMemory()
 
 
 app.listen(process.env.PORT, ()=>{

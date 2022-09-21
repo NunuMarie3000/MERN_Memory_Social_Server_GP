@@ -19,34 +19,27 @@ const seedUser = async () =>{
 
 const seedMemory = async () => {
   try {
+    const author = await userModel.findById("632b2cfae04541e4ffed9fac")
     const memory1 = await memoryModel.create({
-      author: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
-      },
-      createdAt: {
-        type: Date,
-        required: true
-      },
-      image:{
-        type: String
-      },
-      content:{
-        type: String
-      },
-      likes: {
-        required: true,
-        type: Number
-      },
-      comments: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Comment'
-      },
+      author:"632b2cfae04541e4ffed9fac",
+      createdAt: Date.now(),
+      image:"https://scx2.b-cdn.net/gfx/news/2021/ocean.jpg",
+      content:"I went to the beach! Isn't it beautiful?",
     })
+    await memory1.save()
+    author.memories = [memory1]
+    await author.save()
   } catch (error) {
     console.log(error)
   }
 }
 
-module.exports = { seedUser }
+// const seedComment = async () => {
+//   try {
+    
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+module.exports = { seedUser, seedMemory }

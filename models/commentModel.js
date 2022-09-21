@@ -10,7 +10,12 @@ const commentSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  likes: String
+  likes: String,
+  commented_on:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Memory',
+    required: true
+  }
 })
 
 const commentModel = mongoose.model("Comment", commentSchema)

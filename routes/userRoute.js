@@ -6,8 +6,7 @@ const userModel = require('../models/userModel')
 router.get('/user/:id', async (req,res)=>{
   const userId= req.params.id
   try {
-    const user = await userModel.findById(userId)
-    console.log(user)
+    const user = await userModel.findById(userId).populate("memories")
     res.status(200).send(user)
   } catch (error) {
     console.log(error.message)

@@ -9,7 +9,7 @@ router.post('/newmemory/:id', async (req,res)=>{
   try {
     const author = await userModel.findById(userId)
     const newMemory = memoryModel.create({
-      author,
+      author: userId,
       createdAt: Date.now(),
       image: req.body.image,
       content: req.body.content,

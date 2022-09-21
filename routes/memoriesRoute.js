@@ -6,7 +6,6 @@ const memoryModel = require('../models/memoryModel')
 router.get('/memories', async (req, res)=>{
   try {
     const memories = await memoryModel.find().populate("comments")
-    console.log(memories)
     res.status(200).send(memories)
   } catch (err) {
     console.log(err)

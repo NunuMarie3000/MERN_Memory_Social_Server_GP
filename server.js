@@ -9,7 +9,8 @@ const userRoute = require('./routes/userRoute')
 const usersRoute = require('./routes/usersRoute')
 const memoriesByUser = require('./routes/memoriesByUser')
 const memoryRoute = require('./routes/memoryRoute')
-
+const commentRoute = require('./routes/commentRoute')
+const commentsRoute = require('./routes/commentsRoute')
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
   console.log('db connected')
@@ -22,10 +23,13 @@ app.use(userRoute)
 app.use(usersRoute)
 app.use(memoriesByUser)
 app.use(memoryRoute)
+app.use(commentRoute)
+app.use(commentsRoute)
 
 const seed = require('./funcs/seed')
 // seed.seedUser()
 // seed.seedMemory()
+// seed.seedComment()
 
 
 app.listen(process.env.PORT, ()=>{

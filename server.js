@@ -5,7 +5,9 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 
+const userRoute = require('./routes/userRoute')
 const usersRoute = require('./routes/usersRoute')
+
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
   console.log('db connected')
@@ -14,6 +16,7 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use(userRoute)
 app.use(usersRoute)
 
 // const seed = require('./funcs/seed')

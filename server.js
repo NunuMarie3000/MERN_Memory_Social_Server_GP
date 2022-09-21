@@ -11,6 +11,7 @@ const memoriesByUser = require('./routes/memoriesByUser')
 const memoryRoute = require('./routes/memoryRoute')
 const commentRoute = require('./routes/commentRoute')
 const commentsRoute = require('./routes/commentsRoute')
+const userByEmail = require('./routes/userByEmail')
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
   console.log('db connected')
@@ -25,6 +26,7 @@ app.use(memoriesByUser)
 app.use(memoryRoute)
 app.use(commentRoute)
 app.use(commentsRoute)
+app.use(userByEmail)
 
 const seed = require('./funcs/seed')
 // seed.seedUser()

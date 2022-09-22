@@ -23,12 +23,14 @@ const seedUser = async () =>{
 
 const seedMemory = async () => {
   try {
-    const author = await userModel.findById("632c8c45f7c16e6c538b1fef")
+    //tyler id
+    const author = await userModel.findById("632c8c45f7c16e6c538b1fed")
+    // const author = await userModel.findById("632c8c45f7c16e6c538b1fef")
     const memory1 = await memoryModel.create({
-      author:"632c8c45f7c16e6c538b1fef",
+      author:"632c8c45f7c16e6c538b1fed",
       createdAt: Date.now(),
       image:"https://scx2.b-cdn.net/gfx/news/2021/ocean.jpg",
-      content:"I went to the beach! Isn't it beautiful? Take 2",
+      content:"IThis is tyler's vibe",
       likes: 0,
       comments: []
     })

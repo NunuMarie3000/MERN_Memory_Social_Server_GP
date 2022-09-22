@@ -11,7 +11,7 @@ router.get('/comments/:memoryid', async (req,res)=>{
       // const memory = await memoryModel.findById(memoryId).populate("comments")
 
       // what if instead of this i did
-      const comments = await commentModel.findMany({"commented_on": memoryId})
+      const comments = await commentModel.find({"commented_on": memoryId})
 
       res.status(200).send(comments)
     } catch (error) {

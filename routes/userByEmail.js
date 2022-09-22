@@ -5,9 +5,15 @@ const userModel = require('../models/userModel')
 router.get('/useremail/:email', async (req,res)=>{
   try {
     const user = await userModel.findOne({ email: req.params.email})
-    res.status(200).send(user)
+    console.log(user)
+    res.status(200).json({
+      "user":user
+    })
   } catch (error) {
-    res.send(error)
+    res.json({
+      "err":error,
+      "msg": "not a user"
+    })
   }
 })
 

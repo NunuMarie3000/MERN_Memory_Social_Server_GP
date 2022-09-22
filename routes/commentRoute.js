@@ -4,13 +4,11 @@ const router = express.Router()
 const commentModel = require('../models/commentModel')
 const memoryModel = require('../models/memoryModel')
 
-router.post('/newcomment/:userid/memory/:memoryid', async (req, res) => {
-  const userId = req.params.userid
-  const memoryId = req.params.memoryid
+router.post('/newcomment', async (req, res) => {
   const newBody = {
-    author: userId,
+    author: req.body.author,
     body: req.body.body,
-    commented_on: memoryId
+    commented_on: req.body.commented_on
   }
   const memory = await memoryModel.findById(req.body.memoryid)
   try {

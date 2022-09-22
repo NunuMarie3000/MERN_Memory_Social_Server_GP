@@ -28,4 +28,15 @@ router.post('/newuser', async (req,res)=>{
   }
 })
 
+// i accidentally created hella users and need to delete all of them but my, tylers, and storm.obryant@gmail.com
+
+router.delete("/user", async (req,res)=>{
+  try {
+    await userModel.deleteMany()
+    res.status(200).send('deleted! praying')
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 module.exports = router

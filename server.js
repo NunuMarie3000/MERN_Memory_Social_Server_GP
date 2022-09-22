@@ -14,7 +14,7 @@ const commentsRoute = require('./routes/commentsRoute')
 const userByEmail = require('./routes/userByEmail')
 const memoriesRoute = require('./routes/memoriesRoute')
 
-mongoose.connect(process.env.MONGODB_CONNECTION_STRING, ()=>{
+mongoose.connect(process.env.CONNECTION_STRING, ()=>{
   console.log('db connected')
 })
 

@@ -24,13 +24,14 @@ const seedUser = async () =>{
 const seedMemory = async () => {
   try {
     //tyler id
-    const author = await userModel.findById("632c8c45f7c16e6c538b1fed")
-    // const author = await userModel.findById("632c8c45f7c16e6c538b1fef")
+    // const author = await userModel.findById("632cb2a32a7befa11b1478a8")
+    // const author = await userModel.findById("632cb2a32a7befa11b1478a5")
+    const author = await userModel.findById("632cb2a32a7befa11b1478aa")
     const memory1 = await memoryModel.create({
-      author:"632c8c45f7c16e6c538b1fed",
+      author:"632cb2a32a7befa11b1478aa",
       createdAt: Date.now(),
       image:"https://scx2.b-cdn.net/gfx/news/2021/ocean.jpg",
-      content:"IThis is tyler's vibe",
+      content:"I'm Storm...again and I approve this ocean",
       likes: 0,
       comments: []
     })
@@ -44,9 +45,9 @@ const seedMemory = async () => {
 
 const seedComment = async () => {
   const commentBody = {
-    author: "632c8c45f7c16e6c538b1fed",
-    body: "I love that!",
-    commented_on: "632c8cfc35eabce2af532e0a"
+    author: "632cb2a32a7befa11b1478aa",
+    body: "Mood!",
+    commented_on: "632c928d5e363f9987ab3e69"
   }
   try {
     const newComment = await commentModel.create(commentBody)

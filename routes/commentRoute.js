@@ -8,7 +8,8 @@ router.post('/newcomment', async (req, res) => {
   const newBody = {
     author: req.body.author,
     body: req.body.body,
-    commented_on: req.body.commented_on
+    commented_on: req.body.commented_on,
+    likes: 0
   }
   const memory = await memoryModel.findById(req.body.memoryid)
   try {

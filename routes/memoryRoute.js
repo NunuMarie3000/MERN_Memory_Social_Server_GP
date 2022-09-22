@@ -46,6 +46,16 @@ router.put('/memory/:memoryid', async (req, res) => {
   }
 })
 
+// update likes of memory
+router.patch('/memory/:memoryid', async (req,res)=>{
+  const memoryId = req.params.memoryid
+  try {
+    await memoryModel.updateOne({"_id": memoryId}, {$inc : {"likes": 1}})
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 // delete one memory
 router.delete('/memory/:memoryid', async (req, res) => {
   const memoryId = req.params.memoryid

@@ -4,13 +4,13 @@ const router = express.Router()
 const commentModel = require('../models/commentModel')
 const memoryModel = require('../models/memoryModel')
 
-router.post('/newcomment/:id', async (req, res) => {
-  // client needs to provide memory id in the body
-  const userId = req.params.id
+router.post('/newcomment/:userid/memory/:memoryid', async (req, res) => {
+  const userId = req.params.userid
+  const memoryId = req.params.memoryid
   const newBody = {
     author: userId,
     body: req.body.body,
-    commented_on: req.body.commented_on
+    commented_on: memoryId
   }
   const memory = await memoryModel.findById(req.body.memoryid)
   try {

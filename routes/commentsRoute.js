@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 const memoryModel = require('../models/memoryModel')
 
-router.get('/comments/:memoryid', async (req,res)=>{
+router.get('/comments/:memoryid/author/:authorid', async (req,res)=>{
     // client needs to send author's id in the body
     const memoryId = req.params.memoryid
     try {

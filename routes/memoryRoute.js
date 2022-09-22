@@ -13,6 +13,7 @@ router.post('/newmemory/:id', async (req,res)=>{
       createdAt: Date.now(),
       image: req.body.image,
       content: req.body.content,
+      likes:0
     })
     await newMemory.save()
     author.memories = [...author.memories, newMemory]
@@ -49,8 +50,10 @@ router.put('/memory/:memoryid', async (req, res) => {
 // update likes of memory
 router.patch('/memory/:memoryid', async (req,res)=>{
   const memoryId = req.params.memoryid
+  const updatedLikes = req.body.likes
   try {
-    await memoryModel.updateOne({"_id": memoryId}, {$inc : {"likes": 1}})
+    await memoryModel.updateOne({"_id": memoryId}, {$set : {"likes": updatedLikes}})
+    res.status(200).send('Likes updated successfully')
   } catch (error) {
     res.send(error)
   }

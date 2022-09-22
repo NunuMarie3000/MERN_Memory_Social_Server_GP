@@ -23,11 +23,11 @@ router.post('/newcomment', async (req, res) => {
 })
 
 // get one comment associated with a memory
-router.get('/comment/:memoryid', async (req,res)=>{
+router.get('/comment/:commentid', async (req,res)=>{
   // client needs to send author's id in the body
-  const memoryId = req.params.memoryid
+  const commentId = req.params.commentid
   try {
-    const comment = await memoryModel.findById(memoryId)
+    const comment = await commentModel.findById(commentId)
     res.status(200).send(comment)
   } catch (error) {
     res.send(error)
@@ -35,12 +35,11 @@ router.get('/comment/:memoryid', async (req,res)=>{
 })
 
 // update one comment
-router.put('/comment/:memoryid', async (req,res)=>{
-  // client needs to send author's id in the body
-  const memoryId = req.params.memoryid
+router.put('/comment/:commentid', async (req,res)=>{
+  const commentId = req.params.commentid
   const updatedBody = req.body
   try {
-    const updatedCommment = await commentModel.updateOne({"_id": memoryId}, updatedBody)
+    const updatedCommment = await commentModel.updateOne({"_id": commentId}, updatedBody)
     res.status(200).send(updatedCommment)
   } catch (error) {
     res.send(error)
@@ -48,10 +47,10 @@ router.put('/comment/:memoryid', async (req,res)=>{
 })
 
 // delete one comment
-router.delete('/comment/:memoryid', async (req,res)=>{
-  const memoryId = req.params.memoryid
+router.delete('/comment/:commentid', async (req,res)=>{
+  const commentId = req.params.commentid
   try {
-    await memoryModel.deleteOne({"_id": memoryId})
+    await commentModel.deleteOne({"_id": commentId})
     res.status(200).send('Comment deleted')
   } catch (error) {
     res.send(error)

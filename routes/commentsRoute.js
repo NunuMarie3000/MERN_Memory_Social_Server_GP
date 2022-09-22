@@ -7,8 +7,8 @@ router.get('/comments/:memoryid', async (req,res)=>{
     // client needs to send author's id in the body
     const memoryId = req.params.memoryid
     try {
-      const comments = await memoryModel.findById(memoryId).populate("comments")
-      res.status(200).send(comments)
+      const memory = await memoryModel.findById(memoryId).populate("comments")
+      res.status(200).send(memory.comments)
     } catch (error) {
       res.send(error)
     }

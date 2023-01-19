@@ -9,7 +9,8 @@ router.get('/user/:id', async (req,res)=>{
     const user = await userModel.findById(userId).populate("memories")
     res.status(200).send(user)
   } catch (error) {
-    console.log(error.message)
+    // console.log(error.message)
+    console.log(error.message);
     res.send(error)
   }
 })
